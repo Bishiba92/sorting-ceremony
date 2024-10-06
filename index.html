@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Sorting Hat Quiz</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gabriola&display=swap">
+    <link rel="icon" href="favicon.png">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="questions-en.js"></script>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script src="scripts.js"></script>
+</head>
+<body>
+    <img id="audio-toggle" src="AudioV.png" alt="Audio Toggle" class="audio-toggle" onclick="toggleMute()">
+    <select id="language-selector" class="language-selector" onchange="changeLanguage(this.value)">
+        <option value="en" selected>🌐 English</option>
+        <option value="es">🌐 Español</option>
+        <option value="zh">🌐 中文</option>
+        <option value="jp">🌐 日本語</option>
+        <option value="fr">🌐 Français</option>
+        <option value="de">🌐 Deutsch</option>
+		<option value="po">🌐 Português</option>
+    </select>
+    <div class="quiz-container" id="quiz-container">
+        <img src="hogwarts-logo.png" alt="Hogwarts Logo" class="hogwarts-logo">
+    </div>
+    <div id="result-container"></div>
+</body>
+</html>
