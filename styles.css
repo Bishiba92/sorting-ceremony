@@ -150,6 +150,20 @@ body {
 #next-question:hover {
 	background: #357ab8;
 }
+#previous-question {
+	margin-top: 20px;
+	background: #4a90e2;
+	color: #fff;
+	padding: 19px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: background 0.3s ease;
+	font-family: 'Gabriola', serif;
+}
+#previous-question:hover {
+	background: #357ab8;
+}
 #redo-quiz {
 	margin-top: 20px;
 	background: #4a90e2;
@@ -161,12 +175,12 @@ body {
 	transition: background 0.3s ease;
 	font-family: 'Gabriola', serif;
 }
+#redo-quiz:hover {
+	background: #357ab8;
+}
 button {
 	font-family: 'Gabriola', serif;
 	font-size: 18px;
-}
-#redo-quiz:hover {
-	background: #357ab8;
 }
 .bar-container {
 	margin: 20px auto;
