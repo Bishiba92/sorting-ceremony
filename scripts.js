@@ -188,14 +188,19 @@ let score = [];
             buttonSound.play();
         }
 
-        function playRandomBackgroundMusic() {
-            const tracks = ['BGM0.mp3', 'BGM1.mp3', 'BGM2.mp3'];
-            const randomTrack = tracks[Math.floor(Math.random() * tracks.length)];
-            backgroundMusic = new Audio(randomTrack);
-            backgroundMusic.loop = true;
-            backgroundMusic.volume = 0.3;
-            backgroundMusic.play();
-        }
+        // Function to play random background music
+		function playRandomBackgroundMusic() {
+			const tracks = ['BGM0.mp3', 'BGM1.mp3', 'BGM2.mp3'];
+			const randomTrack = tracks[Math.floor(Math.random() * tracks.length)];
+			backgroundMusic = new Audio(randomTrack);
+			backgroundMusic.loop = true;
+			backgroundMusic.volume = 0.3;
+			backgroundMusic.play().then(() => {
+				console.log('Music is playing');
+			}).catch((error) => {
+				console.error('Error playing music:', error);
+			});
+		}
 
         function toggleMute() {
             if (isMuted) {
@@ -306,13 +311,27 @@ let score = [];
 		}
 
         window.onload = () => {
-            displayPlayerSelection();
-            playRandomBackgroundMusic();
-			
-			
+			displayPlayerSelection();
+
+			// Language selector change event
 			const languageSelector = document.getElementById('language-selector');
 			const currentLanguage = languageSelector.selectedOptions[0].value;
 			if (currentLanguage != selectedLanguage) {
 				changeLanguage(currentLanguage);
 			}
-        }
+		};
+		
+		document.addEventListener('DOMContentLoaded', () => {
+			// Add event listener to play music on first user interaction (click or key press)
+			const handleUserInteraction = () => {
+				playRandomBackgroundMusic();
+
+				// Remove event listeners after first interaction
+				document.removeEventListener('click', handleUserInteraction);
+				document.removeEventListener('keydown', handleUserInteraction);
+			};
+
+			// Add event listeners for click and keydown events
+			document.addEventListener('click', handleUserInteraction);
+			document.addEventListener('keydown', handleUserInteraction);
+		});
