@@ -93,7 +93,6 @@ let score = [];
                     <canvas id="houseChart"></canvas>
                 </div>
             `;
-            scrollToTop();
         }
 
         function handleOptionClick(playerIndex, optionIndex) {
@@ -121,6 +120,7 @@ let score = [];
             currentPlayerAnswers = Array.from({ length: numPlayers }, () => -1);
             currentQuestionIndex++;
             displayQuestion();
+			scrollToTop();
         }
 		
 		function previousQuestion() {
@@ -133,6 +133,7 @@ let score = [];
                 });
                 displayQuestion();
             }
+			scrollToTop();
         }
       
 		var showingResults = false;
