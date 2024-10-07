@@ -139,7 +139,7 @@ let score = [];
         function playResultSoundAndDisplay() {
 			showingResults = true;
 			document.getElementById("previous-question").remove();
-            const resultSound = new Audio('Reveal.mp3');
+            const resultSound = new Audio('Reveal.ogg');
             resultSound.play();
 			const question = document.getElementById('question');
             const container = document.getElementById('quiz-container');
@@ -184,14 +184,30 @@ let score = [];
         }
 
         function playButtonSound() {
-            const buttonSound = new Audio('Click.mp3');
+            const buttonSound = new Audio('Click.ogg');
             buttonSound.play();
         }
 
-        // Function to play random background music
+		// Function to play random background music
 		function playRandomBackgroundMusic() {
-			const tracks = ['BGM0.mp3', 'BGM1.mp3', 'BGM2.mp3'];
-			const randomTrack = tracks[Math.floor(Math.random() * tracks.length)];
+			const tracks = ['BGM0.ogg', 'BGM1.ogg', 'BGM2.ogg'];
+			const trackNames = ['Ways of the Wizard', 'The Magic Tree', 'Spirits of the Moor'];
+			const trackLinks = [
+				'https://pixabay.com/music/fantasy-dreamy-childrens-ways-of-the-wizard-197105/',
+				'https://pixabay.com/music/fantasy-dreamy-childrens-the-magic-tree-150606/',
+				'https://pixabay.com/music/scary-childrens-tunes-spirits-of-the-moor-180852/'
+			];
+
+			const trackIndex = Math.floor(Math.random() * tracks.length);
+			const randomTrack = tracks[trackIndex];
+			const trackName = trackNames[trackIndex];
+			const trackLink = trackLinks[trackIndex];
+
+			// Update the music name in the DOM with a clickable link
+			const musicNameElement = document.getElementById("music-name");
+			musicNameElement.innerHTML = `<a href="${trackLink}" target="_blank" style="text-decoration: none; color: inherit;">${trackName}</a>`;
+
+			// Create an audio object and play the music
 			backgroundMusic = new Audio(randomTrack);
 			backgroundMusic.loop = true;
 			backgroundMusic.volume = 0.3;
@@ -201,6 +217,7 @@ let score = [];
 				console.error('Error playing music:', error);
 			});
 		}
+
 
         function toggleMute() {
             if (isMuted) {
